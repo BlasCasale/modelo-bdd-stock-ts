@@ -13,7 +13,7 @@ export const ProductFunc = (db: Sequelize): void => {
       unique: true
     },
     code: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
       unique: true
     }

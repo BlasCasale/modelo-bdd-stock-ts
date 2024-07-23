@@ -32,4 +32,6 @@ UserFunc(db)
 
 void connectToDataBase()
 
+export const { User, StockType, Stock, Product } = db.models
+
 export default db

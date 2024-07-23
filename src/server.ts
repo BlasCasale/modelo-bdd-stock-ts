@@ -5,6 +5,7 @@ import router from './routes/index.routes'
 const server = express()
 
 server.use(morgan('dev'))
+server.use(express.json())
 server.use((_req: Request, res: Response, next: NextFunction) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Credentials', 'true')

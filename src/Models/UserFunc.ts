@@ -16,5 +16,7 @@ export const UserFunc = (db: Sequelize): void => {
       type: DataTypes.INTEGER,
       allowNull: false
     }
+  }, {
+    timestamps: false
   })
 }
