@@ -8,23 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./src/server"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const db_1 = __importDefault(require("./src/db"));
-dotenv_1.default.config();
-const PORT = process.env.PORT;
-server_1.default.listen(PORT, () => {
-    (() => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            yield db_1.default.sync({ alter: true });
-            console.log(`Listening on PORT ${PORT}`);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }))().catch(error => console.log(error));
+const db_1 = require("../db");
+const createUser = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userName, pin }) {
+    const user = yield db_1.User.create({ userName, pin });
+    return user;
 });
+exports.default = createUser;

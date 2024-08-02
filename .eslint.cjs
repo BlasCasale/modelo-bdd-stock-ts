@@ -8,6 +8,12 @@ module.exports = {
   rules: {
     "quotes": "off",
     "@typescript-eslint/quotes": "error",
-    "no-conditional-assignment": "off"
+    "no-conditional-assignment": "off",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksConditionals": false
+      }
+    ]
   }
 }

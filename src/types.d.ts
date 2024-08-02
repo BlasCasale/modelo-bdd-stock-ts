@@ -44,5 +44,12 @@ export type StockPost = Omit<Stock, 'id'>
 
 export interface CustomError extends Error {
   statusCode: number
-  message: string
+  message?: string
+}
+
+// respuestas para el usuario
+
+export interface UserResponse {
+  message?: string
+  user?: UserT
 }

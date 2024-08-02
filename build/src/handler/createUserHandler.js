@@ -12,19 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = __importDefault(require("./src/server"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const db_1 = __importDefault(require("./src/db"));
-dotenv_1.default.config();
-const PORT = process.env.PORT;
-server_1.default.listen(PORT, () => {
-    (() => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            yield db_1.default.sync({ alter: true });
-            console.log(`Listening on PORT ${PORT}`);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }))().catch(error => console.log(error));
+exports.createUserHandler = void 0;
+const createUser_1 = __importDefault(require("../controller/createUser"));
+const const_1 = require("../utils/const");
+const createUserHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { userName, pin } = req.body;
+        const user = yield (0, createUser_1.default)({ userName, pin });
+        res.send({ message: const_1.successfulRes, user });
+    }
+    catch (error) {
+        const CE = error;
+        res.status(CE.statusCode).send({ error: CE.message });
+    }
 });
+exports.createUserHandler = createUserHandler;
